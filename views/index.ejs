@@ -18,14 +18,13 @@
                 <a class="navbar-brand me-lg-5 me-4 ms-1" href="#">
                     <img src="/assets/Logo_Elevate.png" alt="Logo">
                 </a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
-                    aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarMenu">
-                    <ul class="navbar-nav ms-auto">
+                <div class="ham-menu col-2 d-block d-md-none">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="collapse navbar-collapse mb-3 mb-md-0 mt-2 mt-md-0" id="navbarMenu">
+                    <ul class="navbar-nav ms-auto mb-4 mb-md-0">
                         <li class="nav-item mx-1">
                             <a class="nav-link" href="#">Services</a>
                         </li>
@@ -39,7 +38,8 @@
                             <a class="nav-link" href="#">Contact</a>
                         </li>
                     </ul>
-                    <a href="#" class="ms-lg-5 ms-4 mt-1 mb-1 me-0 py-3 px-2 navbar-button text-decoration-none border">
+                    <a href="#"
+                        class="ms-lg-5 ms-md-p4 mt-md-1 mb-1 me-0 py-3 px-2 navbar-button text-decoration-none border">
                         Start Project
                     </a>
                 </div>
@@ -48,8 +48,15 @@
     </header>
 
     <main class="h-100 bg-black text-white">
-
+        <div class="container-scroll d-none d-md-block">
+            <div class="down text-center w-100 hp-down">
+                <span class="go-down"></span>
+                <p class="scroll-text">Scroll And Dive In</p>
+            </div>
+        </div>
     </main>
+
+    <script src="/assets/scripts.js"></script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
