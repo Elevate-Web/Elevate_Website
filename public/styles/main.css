@@ -52,21 +52,100 @@
 
 @keyframes line {
     10% {
-      transform: scaleY(0);
-      transform-origin: center top;
+        transform: scaleY(0);
+        transform-origin: center top;
     }
+
     50% {
-      transform-origin: center top;
-      transform: scale(1);
+        transform-origin: center top;
+        transform: scale(1);
     }
+
     51% {
-      transform-origin: center bottom;
+        transform-origin: center bottom;
+    }
+
+    100% {
+        transform-origin: center bottom;
+        transform: scaleY(0);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    40% {
+        transform: translateX(-50%) translateY(10px);
+    }
+
+    60% {
+        transform: translateX(-50%) translateY(5px);
+    }
+}
+
+@keyframes SlideRight {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes SlideLeft {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes SlideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes SlideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
     }
     100% {
-      transform-origin: center bottom;
-      transform: scaleY(0);
+        transform: translateX(-50%);
     }
-  }
+}
 
 html,
 body {
@@ -83,6 +162,7 @@ body {
     letter-spacing: 0.09rem;
     margin-left: 1rem;
     margin-right: 1rem;
+    z-index: 999;
 }
 
 @media (min-width: 768px) {
@@ -130,7 +210,8 @@ body {
 .nav-item:hover::after {
     opacity: 1;
     transform: translateY(0);
-    border-bottom: solid 0.2rem blue;
+    border-bottom: solid 0.2rem #0d6efd;
+    z-index: 10;
 }
 
 .nav-link {
@@ -140,11 +221,12 @@ body {
 }
 
 .navbar-button {
-    background-color: #324eef;
+    background-color: #0d6efd;
     color: white;
     border-radius: 12rem;
     position: relative;
     margin-left: 0;
+    z-index: 100;
 }
 
 .navbar-button:after,
@@ -152,7 +234,7 @@ body {
     content: '';
     position: absolute;
     z-index: -1;
-    background-image: conic-gradient(from var(--angle), transparent 70%, #324eef);
+    background-image: conic-gradient(from var(--angle), transparent 70%, #0d6efd);
     height: 100%;
     width: 100%;
     border-radius: 12rem;
@@ -285,6 +367,13 @@ body {
         width: 15rem;
         height: auto;
     }
+
+    .main-title {
+        font-size: 5.8rem;
+        line-height: 1.2;
+        font-weight: 500;
+        letter-spacing: 3px;
+    }
 }
 
 .container-scroll {
@@ -351,4 +440,347 @@ body {
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 0;
+}
+
+.sub-title {
+    animation: fadeIn 3.5s forwards;
+}
+
+.main-button {
+    text-decoration: none;
+    padding: 1.5rem 2rem;
+    background-color: white;
+    color: #000;
+    border-radius: 12rem;
+}
+
+.main-button:hover {
+    animation: increase 1s forwards;
+}
+
+.scroll-arrow-cont {
+    animation: fadeIn 2s forwards;
+}
+
+.scroll-arrow {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 20px solid white;
+    margin: 0 auto;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s 2s infinite;
+    opacity: 1;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.vertical-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 5px;
+    height: 100%;
+    background-color: white;
+    opacity: 1;
+    z-index: -999;
+}
+
+.container-fluid {
+    position: relative;
+    z-index: -1;
+}
+
+.text-0 {
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+}
+
+.text-0 h4 {
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+.c-text-2,
+.c-text-3,
+.c-text-4,
+.c-text-5,
+.c-text-6 {
+    margin-top: 15%;
+}
+
+.text-1,
+.text-2,
+.text-3,
+.text-4,
+.text-5,
+.text-6 {
+    flex-direction: column;
+    background-color: #fff;
+    color: #000;
+    align-items: center;
+    z-index: 10;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 20px;
+    border-radius: 12rem;
+}
+
+.text-1 p,
+.text-2 p,
+.text-3 p,
+.text-4 p,
+.text-5 p,
+.text-6 p {
+    padding: 2rem;
+    text-align: center;
+}
+
+.fade-in {
+    opacity: 0;
+}
+
+.fade-in.slide-right.visible {
+    animation: SlideRight 1.5s forwards;
+}
+
+.fade-in.slide-left.visible {
+    animation: SlideLeft 1.5s forwards;
+}
+
+.fade-in.slide-down.visible {
+    animation: SlideDown 2s forwards;
+}
+
+.fade-in.slide-up.visible {
+    animation: SlideUp 1.5s forwards;
+}
+
+.c-text-7 {
+    padding-top: 5%;
+}
+
+.text-7 {
+    padding-top: 5%;
+    padding-left: 6%;
+    padding-right: 7%;
+    padding-bottom: 5%;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+.c-packages {
+    padding-bottom: 5%;
+}
+
+.c-text-8 {
+    padding-bottom: 5%;
+}
+
+.text-8 {
+    padding-left: 6%;
+    padding-right: 7%;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+.c-items {
+    padding-bottom: 5%;
+}
+
+.card-header-1 {
+    background-color: rgb(61, 203, 254) !important;
+}
+
+.card-header-2 {
+    background-color: #0fa3db !important;
+}
+
+.items {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-left: 6%;
+    padding-right: 7%;
+}
+
+.item-col-1,
+.item-col-2,
+.item-col-3 {
+    text-align: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 77px 25px 77px;
+}
+
+.item-col-1:after,
+.item-col-2:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #f2f2f2;
+}
+
+.icon svg {
+    width: 12vh;
+    height: 12vh;
+}
+
+.final-container {
+    z-index: 5;
+    padding-bottom: 5%;
+}
+
+.cta-button {
+    background-color: white;
+    padding: 1.5rem 2rem;
+    position: relative;
+    z-index: 10;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    border-radius: 1rem;
+}
+
+.cta-button a {
+    text-decoration: none;
+}
+
+.cta-button:hover:after,
+.cta-button:hover:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    background-image: conic-gradient(from var(--angle), transparent 70%, #FFF);
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    padding: 2.95rem 15.3rem;
+    animation: 3.5s spin linear infinite;
+    border-radius: 1rem;
+}
+
+.card-svg {
+    fill: black;
+}
+
+svg {
+    fill: #fff
+}
+
+.swiper-container{
+    padding-bottom: 5%;
+}
+
+.swiper-logo {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.infinite-scroll {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    padding-bottom: 2%;
+}
+
+.scroll-track {
+    display: inline-block;
+    animation: scroll 25s linear infinite;
+}
+
+.scroll-item {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.text-9{
+    letter-spacing: 2px;
+}
+
+.footer-svg {
+    transition: tranform 0.5s ease;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 1rem;
+}
+
+.footer-svg:hover svg {
+    transform: scale(1.5);
+}
+
+.footer-svg::before,
+.footer-svg::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    background-color: transparent;
+    transform: translateY(7px);
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.6s;
+}
+
+.footer-svg:hover::before,
+.footer-svg:hover::after {
+    transform: translateY(0);
+    border-bottom: solid 0.2rem #fff;
+    opacity: 1;
+    z-index: 10;
+}
+
+.footer-nav {
+    transition: tranform 0.5s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-nav:hover {
+    font-weight: bolder;
+}
+
+.footer-nav::before,
+.footer-nav::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    background-color: transparent;
+    transform: translateY(7px);
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.6s;
+}
+
+.footer-nav:hover::before,
+.footer-nav:hover::after {
+    transform: translateY(0);
+    border-bottom: solid 0.2rem #fff;
+    opacity: 1;
+    z-index: 10;
+}
+
+.my-web {
+    transition: font-weight 0.3s ease;
+}
+
+.my-web:hover {
+    font-weight: bolder;
 }

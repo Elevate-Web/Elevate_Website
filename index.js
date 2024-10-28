@@ -16,6 +16,7 @@ app.get("/", (req, res) =>{
     }
 });
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+app.listen(port, '0.0.0.0',() => {
+    console.log(`Server running on LAN at http://192.168.0.73:${port}`);
+    console.log(`Server running public at http://188.241.10.200:${port}`);
   });
