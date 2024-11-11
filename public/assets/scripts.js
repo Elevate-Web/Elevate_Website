@@ -1,3 +1,20 @@
+// Hide and Show NavBar on Scroll
+let lastScrollTop = 0;
+
+document.body.addEventListener("scroll", function () {
+  const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+  const header = document.getElementById("header");
+  console.log(lastScrollTop);
+  if (scrollTop > window.innerHeight - 100 && scrollTop > lastScrollTop) {
+    header.classList.add('off');
+  } 
+  else if (scrollTop < lastScrollTop - 50) {
+    header.classList.remove('off');
+  }
+
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+});
+
 // Select the hamburger menu and navbar elements
 const hamMenu = document.querySelector(".ham-menu");
 const navbarMenu = document.getElementById("navbarMenu");
